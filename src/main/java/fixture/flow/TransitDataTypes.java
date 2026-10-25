@@ -1,14 +1,13 @@
 package fixture.flow;
 
-/** Data categories routed by the gateway toward peer applications. */
+/** Data categories served by DataHub. */
 public final class TransitDataTypes {
 
-  public static final String ROUTE_ORDERS = "ORDER_PAYLOAD";
-  public static final String ROUTE_PAYMENTS = "PAYMENT_REQUEST";
-  public static final String ROUTE_CUSTOMERS = "CUSTOMER_LOOKUP";
+  public static final String MARKET_DATA = "MARKET_DATA";
+  public static final String RISK_MARKET_DATA = "RISK_MARKET_DATA";
+  public static final String MARK_TO_MARKET = "MARK_TO_MARKET";
 
-  /** Inbound from Portail client */
-  public static final String INBOUND_FROM_PORTAL = "ORDER_SUBMISSION";
+  public static final String PAYLOAD_FORMAT = "JSON";
 
   private TransitDataTypes() {}
 }

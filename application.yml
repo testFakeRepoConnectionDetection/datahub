@@ -1,20 +1,21 @@
 app:
-  name: API Gateway
+  name: DataHub
   flow-enrichment:
     data-category-field: data_category
-  routes:
-    orders:
-      uri: https://service-commandes.internal
-      target-application: Service commandes
-      data-category: ORDER_PAYLOAD
-      inbound-data-category: ORDER_SUBMISSION
-    payments:
-      uri: https://paiements.internal
-      target-application: Paiements
-      data-category: PAYMENT_REQUEST
-    customers:
-      uri: https://base-clients.internal
-      target-application: Base clients
-      data-category: CUSTOMER_LOOKUP
+  api:
+    market-data:
+      path: /api/v1/market-data
+      data-category: MARKET_DATA
+      called-by-application: Trading/Pricing
+    risk-market-data:
+      path: /api/v1/risk-market-data
+      data-category: RISK_MARKET_DATA
+      called-by-application: Analytics
+    marks:
+      path: /api/v1/marks
+      data-category: MARK_TO_MARKET
+      called-by-application: PNL
   callers:
-    - Portail client
+    - Trading/Pricing
+    - Analytics
+    - PNL

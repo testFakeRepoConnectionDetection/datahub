@@ -1,19 +1,19 @@
-# API Gateway (fixture)
+# DataHub (fixture)
 
-HTTP entry point for the platform.
+Market and reference data hub. Serves prices, curves, and marks to the booking chain.
 
 ## Integrations (topology)
 
-- Proxies to **Service commandes**, **Paiements**, and **Base clients**.
-- Exposes `/api/v1/gateway` consumed by **Portail client**.
+- Exposes `/api/v1/market-data` consumed by **Trading/Pricing**.
+- Exposes `/api/v1/risk-market-data` consumed by **Analytics**.
+- Exposes `/api/v1/marks` consumed by **PNL**.
 
 ## Data transiting on flows (Data Model fixture)
 
 | Peer | Kind | data_category | Notes |
 |------|------|---------------|-------|
-| Service commandes | API | `ORDER_PAYLOAD` | route `orders` |
-| Paiements | API | `PAYMENT_REQUEST` | route `payments` |
-| Base clients | API | `CUSTOMER_LOOKUP` | route `customers` |
-| Portail client | API (inbound) | `ORDER_SUBMISSION` | documented caller |
+| Trading/Pricing | API (inbound) | `MARKET_DATA` | quote inputs |
+| Analytics | API (inbound) | `RISK_MARKET_DATA` | risk curves |
+| PNL | API (inbound) | `MARK_TO_MARKET` | end-of-day marks |
 
-See `TransitDataTypes.java` and `application.yml` route `data-category` keys.
+See `TransitDataTypes.java` and `application.yml`.

@@ -4,16 +4,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Inbound API for Portail client; outbound routes to peer applications.
+ * Market and reference data API. Inbound HTTP from Trading/Pricing, Analytics, and PNL.
  *
- * <p>Route data_category values: ORDER_PAYLOAD, PAYMENT_REQUEST, CUSTOMER_LOOKUP (see
- * fixture.flow.TransitDataTypes).
+ * <p>data_category values: MARKET_DATA, RISK_MARKET_DATA, MARK_TO_MARKET
+ * (see fixture.flow.TransitDataTypes).
  */
 @RestController
-@RequestMapping("/api/v1/gateway")
+@RequestMapping("/api/v1/market-data")
 public class IntegrationHints {
 
-  // spring.cloud.gateway.routes → Service commandes (ORDER_PAYLOAD), Paiements (PAYMENT_REQUEST),
-  // Base clients (CUSTOMER_LOOKUP)
-  // Inbound from Portail client carries ORDER_SUBMISSION
+  // POST /api/v1/market-data from Trading/Pricing — data_category MARKET_DATA
+  // POST /api/v1/risk-market-data from Analytics — data_category RISK_MARKET_DATA
+  // POST /api/v1/marks from PNL — data_category MARK_TO_MARKET
 }
