@@ -1,5 +1,7 @@
 # DataHub (fixture)
 
+Business function: `MARKET_DATA` (`app.business_function`).
+
 Market and reference data hub.
 
 ## Integrations (topology)
