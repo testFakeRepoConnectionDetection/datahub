@@ -2,20 +2,29 @@ app:
   name: DataHub
   flow-enrichment:
     data-category-field: data_category
+  integrations:
+    pnl:
+      base-url: https://pnl.internal/api/v1/marks
+      target-application: PNL
+      data-category: MARK_TO_MARKET
+      payload-format: JSON
+      payload-type: fixture.dto.MarkToMarketDto
+    regulatory:
+      base-url: https://regulatory.internal/api/v1/instruments
+      target-application: Regulatory
+      data-category: INSTRUMENT_REFERENCE
+      payload-format: JSON
+      payload-type: fixture.dto.InstrumentReferenceDto
+    accounting:
+      base-url: https://accounting.internal/api/v1/valuation-rates
+      target-application: Accounting
+      data-category: VALUATION_RATES
+      payload-format: JSON
+      payload-type: fixture.dto.ValuationRatesDto
   api:
-    market-data:
-      path: /api/v1/market-data
-      data-category: MARKET_DATA
-      called-by-application: Trading/Pricing
     risk-market-data:
       path: /api/v1/risk-market-data
       data-category: RISK_MARKET_DATA
       called-by-application: Analytics
-    marks:
-      path: /api/v1/marks
-      data-category: MARK_TO_MARKET
-      called-by-application: PNL
   callers:
-    - Trading/Pricing
     - Analytics
-    - PNL
