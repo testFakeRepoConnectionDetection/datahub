@@ -1,6 +1,7 @@
 # DataHub (fixture)
 
 Business function: `MARKET_DATA` (`app.business_function`).
+Pillar: `Position & Risk` (`app.pillar`).
 
 Market and reference data hub.
 

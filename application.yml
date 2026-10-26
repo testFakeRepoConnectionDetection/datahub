@@ -1,6 +1,7 @@
 app:
   name: DataHub
   business_function: MARKET_DATA
+  pillar: "Position & Risk"
   flow-enrichment:
     data-category-field: data_category
   integrations:

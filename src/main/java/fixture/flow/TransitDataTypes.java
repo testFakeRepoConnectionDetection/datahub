@@ -6,6 +6,9 @@ public final class TransitDataTypes {
   /** Node attribute business_function for DataHub. */
   public static final String BUSINESS_FUNCTION = "MARKET_DATA";
 
+  /** Node attribute pillar for DataHub. */
+  public static final String PILLAR = "Position & Risk";
+
   public static final String RISK_MARKET_DATA = "RISK_MARKET_DATA";
   public static final String MARK_TO_MARKET = "MARK_TO_MARKET";
   public static final String INSTRUMENT_REFERENCE = "INSTRUMENT_REFERENCE";
