@@ -27,6 +27,13 @@ app:
       channel: /api/v1/trades
       data: trade
       frequency: daily
+    trading-pricing:
+      base-url: https://trading-pricing.internal/api/v1/prices
+      target-application: Trading/Pricing
+      connection-kind: API
+      channel: /api/v1/prices
+      data: price
+      frequency: real-time
   api:
     realtime-pv:
       path: /api/v1/realtime-pv
