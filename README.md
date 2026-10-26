@@ -7,18 +7,22 @@ Market and reference data hub.
 
 ## Integrations (topology)
 
-- Exposes `/api/v1/risk-market-data` consumed by **Analytics**.
-- Pushes marks to **PNL** on `/api/v1/marks`.
-- Pushes instrument reference data to **Regulatory** on `/api/v1/instruments`.
-- Pushes valuation rates to **Accounting** on `/api/v1/valuation-rates`.
+- Receives real-time PV from **Analytics** on `/api/v1/realtime-pv`.
+- Receives the end-of-day trade from **Booking** on `/api/v1/eod-trades`.
+- Receives the end-of-day cashflow from **Booking** on `/api/v1/eod-cashflows`.
+- Pushes the daily cashflow to **PNL** on `/api/v1/cashflows`.
+- Pushes the daily PV to **PNL** on `/api/v1/pv`.
+- Pushes the daily trade to **Regulatory** on `/api/v1/trades`.
 
 ## Data transiting on flows (Data Model fixture)
 
-| Peer | Kind | direction | data_category | Notes |
-|------|------|-----------|---------------|-------|
-| Analytics | API | inbound | `RISK_MARKET_DATA` | risk curves |
-| PNL | API | outbound | `MARK_TO_MARKET` | end-of-day marks |
-| Regulatory | API | outbound | `INSTRUMENT_REFERENCE` | instrument master |
-| Accounting | API | outbound | `VALUATION_RATES` | rates used by the ledger |
+| Peer | direction | Kind | Channel | data | frequency |
+|------|-----------|------|---------|------|-----------|
+| Analytics | inbound | API | /api/v1/realtime-pv | `PV` | `real-time` |
+| Booking | inbound | API | /api/v1/eod-trades | `trade` | `daily` |
+| Booking | inbound | API | /api/v1/eod-cashflows | `cashflow` | `daily` |
+| PNL | outbound | API | /api/v1/cashflows | `cashflow` | `daily` |
+| PNL | outbound | API | /api/v1/pv | `PV` | `daily` |
+| Regulatory | outbound | API | /api/v1/trades | `trade` | `daily` |
 
-See `TransitDataTypes.java` and `application.yml`.
+See `TransitDataTypes.java` and `application.yml` (`data`, `frequency`).

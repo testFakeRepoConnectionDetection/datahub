@@ -3,30 +3,49 @@ app:
   business_function: MARKET_DATA
   pillar: "Position & Risk"
   flow-enrichment:
-    data-category-field: data_category
+    data-field: data
+    frequency-field: frequency
   integrations:
-    pnl:
-      base-url: https://pnl.internal/api/v1/marks
+    pnl-cashflow:
+      base-url: https://pnl.internal/api/v1/cashflows
       target-application: PNL
-      data-category: MARK_TO_MARKET
-      payload-format: JSON
-      payload-type: fixture.dto.MarkToMarketDto
+      connection-kind: API
+      channel: /api/v1/cashflows
+      data: cashflow
+      frequency: daily
+    pnl-pv:
+      base-url: https://pnl.internal/api/v1/pv
+      target-application: PNL
+      connection-kind: API
+      channel: /api/v1/pv
+      data: PV
+      frequency: daily
     regulatory:
-      base-url: https://regulatory.internal/api/v1/instruments
+      base-url: https://regulatory.internal/api/v1/trades
       target-application: Regulatory
-      data-category: INSTRUMENT_REFERENCE
-      payload-format: JSON
-      payload-type: fixture.dto.InstrumentReferenceDto
-    accounting:
-      base-url: https://accounting.internal/api/v1/valuation-rates
-      target-application: Accounting
-      data-category: VALUATION_RATES
-      payload-format: JSON
-      payload-type: fixture.dto.ValuationRatesDto
+      connection-kind: API
+      channel: /api/v1/trades
+      data: trade
+      frequency: daily
   api:
-    risk-market-data:
-      path: /api/v1/risk-market-data
-      data-category: RISK_MARKET_DATA
+    realtime-pv:
+      path: /api/v1/realtime-pv
       called-by-application: Analytics
+      connection-kind: API
+      data: PV
+      frequency: real-time
+    eod-trades:
+      path: /api/v1/eod-trades
+      called-by-application: Booking
+      connection-kind: API
+      data: trade
+      frequency: daily
+    eod-cashflows:
+      path: /api/v1/eod-cashflows
+      called-by-application: Booking
+      connection-kind: API
+      data: cashflow
+      frequency: daily
   callers:
     - Analytics
+    - Booking

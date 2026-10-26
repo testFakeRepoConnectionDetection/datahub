@@ -1,6 +1,9 @@
 package fixture.flow;
 
-/** Data categories served by DataHub. */
+/**
+ * Edge attributes on DataHub flows.
+ * grep: data frequency PV trade cashflow real-time daily
+ */
 public final class TransitDataTypes {
 
   /** Node attribute business_function for DataHub. */
@@ -9,12 +12,11 @@ public final class TransitDataTypes {
   /** Node attribute pillar for DataHub. */
   public static final String PILLAR = "Position & Risk";
 
-  public static final String RISK_MARKET_DATA = "RISK_MARKET_DATA";
-  public static final String MARK_TO_MARKET = "MARK_TO_MARKET";
-  public static final String INSTRUMENT_REFERENCE = "INSTRUMENT_REFERENCE";
-  public static final String VALUATION_RATES = "VALUATION_RATES";
-
-  public static final String PAYLOAD_FORMAT = "JSON";
+  public static final String DATA_PV = "PV";
+  public static final String DATA_TRADE = "trade";
+  public static final String DATA_CASHFLOW = "cashflow";
+  public static final String FREQUENCY_REAL_TIME = "real-time";
+  public static final String FREQUENCY_DAILY = "daily";
 
   private TransitDataTypes() {}
 }
