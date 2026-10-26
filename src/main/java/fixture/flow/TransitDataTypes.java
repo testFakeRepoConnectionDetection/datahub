@@ -2,7 +2,7 @@ package fixture.flow;
 
 /**
  * Edge attributes on DataHub flows.
- * grep: data frequency PV trade cashflow real-time daily
+ * grep: data frequency PV trade cashflow price real-time daily
  */
 public final class TransitDataTypes {
 
@@ -15,6 +15,7 @@ public final class TransitDataTypes {
   public static final String DATA_PV = "PV";
   public static final String DATA_TRADE = "trade";
   public static final String DATA_CASHFLOW = "cashflow";
+  public static final String DATA_PRICE = "price";
   public static final String FREQUENCY_REAL_TIME = "real-time";
   public static final String FREQUENCY_DAILY = "daily";
 
