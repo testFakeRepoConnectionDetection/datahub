@@ -13,6 +13,7 @@ Market and reference data hub.
 - Pushes the daily cashflow to **PNL** on `/api/v1/cashflows`.
 - Pushes the daily PV to **PNL** on `/api/v1/pv`.
 - Pushes the daily trade to **Regulatory** on `/api/v1/trades`.
+- Pushes the real-time price to **Trading/Pricing** on `/api/v1/prices`.
 
 ## Data transiting on flows (Data Model fixture)
 
@@ -24,5 +25,6 @@ Market and reference data hub.
 | PNL | outbound | API | /api/v1/cashflows | `cashflow` | `daily` |
 | PNL | outbound | API | /api/v1/pv | `PV` | `daily` |
 | Regulatory | outbound | API | /api/v1/trades | `trade` | `daily` |
+| Trading/Pricing | outbound | API | /api/v1/prices | `price` | `real-time` |
 
 See `TransitDataTypes.java` and `application.yml` (`data`, `frequency`).

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Inbound PV from Analytics and trade plus cashflow from Booking.
- * Outbound cashflow and PV to PNL, trade to Regulatory.
+ * Outbound cashflow and PV to PNL, trade to Regulatory, price to Trading/Pricing.
  *
  * <p>Edge fields data and frequency. Two distinct flows to PNL: cashflow/daily and PV/daily.
  * Two distinct inbound flows from Booking: trade/daily and cashflow/daily.
@@ -20,4 +20,5 @@ public class IntegrationHints {
   // HTTP POST pnl /api/v1/cashflows — data cashflow, frequency daily
   // HTTP POST pnl /api/v1/pv — data PV, frequency daily
   // HTTP POST regulatory /api/v1/trades — data trade, frequency daily
+  // HTTP POST trading-pricing /api/v1/prices — data price, frequency real-time
 }
