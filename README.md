@@ -31,15 +31,17 @@ See `TransitDataTypes.java` and `application.yml` (`data`, `frequency`).
 
 ## Modules
 
-The market data hub contains market intake and market distribution. Each child is one business flow.
+The market data hub contains market intake, market calculation, report generation and market distribution.
 
 | Module | Package | What it does |
 |--------|---------|----------------|
-| Market data hub | `fixture.datahub` | Holds intake and distribution for Position and Risk. |
+| Market data hub | `fixture.datahub` | Holds intake, calculation, reporting and distribution for Position and Risk. |
 | Market intake | `fixture.datahub.ingestion` | Receives market facts from Analytics and Booking. |
 | Real-time valuation intake | `fixture.datahub.ingestion.RealtimeValuationIntake` | Analytics pushes `PV` at `real-time` on `/api/v1/realtime-pv`. |
 | End-of-day trade intake | `fixture.datahub.ingestion.EndOfDayTradeIntake` | Booking pushes `trade` at `daily` on `/api/v1/eod-trades`. |
 | End-of-day cashflow intake | `fixture.datahub.ingestion.EndOfDayCashflowIntake` | Booking pushes `cashflow` at `daily` on `/api/v1/eod-cashflows`. |
+| Market calculation | `fixture.datahub.calculation` | Marks the book from the ingested PV, trade and cashflow. |
+| Report generation | `fixture.datahub.reporting` | Builds the daily position and risk report from the market calculation. |
 | Market distribution | `fixture.datahub.distribution` | Republishes stored facts to PNL and Regulatory. |
 | PNL cashflow distribution | `fixture.datahub.distribution.PnlCashflowPublisher` | Pushes `cashflow` at `daily` to PNL `/api/v1/cashflows`. |
 | PNL valuation distribution | `fixture.datahub.distribution.PnlValuationPublisher` | Pushes `PV` at `daily` to PNL `/api/v1/pv`. |
